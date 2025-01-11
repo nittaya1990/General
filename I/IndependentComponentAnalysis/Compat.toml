@@ -1,4 +1,5 @@
 [0]
+Statistics = "1"
 julia = "1"
 
 ["0-0.1.0"]
@@ -41,5 +42,8 @@ Images = "0.22-0.25"
 LoopVectorization = "0.12"
 SLEEFPirates = "0.6"
 
-["0.1.5-0"]
+["0.1.5"]
 MultivariateStats = "0.7-0.9"
+
+["0.1.6-0"]
+MultivariateStats = "0.7-0.10"

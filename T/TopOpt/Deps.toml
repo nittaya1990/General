@@ -13,7 +13,6 @@ Nonconvex = "01bcebdf-4d21-426d-b5c4-6132c1619978"
 Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 Preconditioners = "af69fa37-3177-5a40-98ee-561f696e4fcd"
 Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
-Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 Setfield = "efcf1570-3423-57d1-acb7-fd33fddbac46"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
@@ -39,6 +38,9 @@ Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
 
+["0-0.9"]
+Requires = "ae029012-a4dd-5104-9daa-d747884805df"
+
 ["0.5-0"]
 FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 NonconvexMMA = "d3d89cbb-4ecd-4604-818d-8d1ff343e4da"
@@ -55,3 +57,12 @@ Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 MappedArrays = "dbb5928d-eab1-5f90-85c2-b9b0edb7c900"
 NearestNeighbors = "b8a86587-4115-5ab1-83bc-aa920d37bbce"
+
+["0.5.3-0"]
+AbstractDifferentiation = "c29ec348-61ec-40c8-8164-b8c60e9d9f3d"
+
+["0.6-0"]
+JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
+
+["0.7-0"]
+ColorSchemes = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
