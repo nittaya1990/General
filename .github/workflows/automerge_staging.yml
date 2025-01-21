@@ -19,31 +19,23 @@ jobs:
     strategy:
       matrix:
         version:
-          - '1'
+          - '1.9'
         os:
           - ubuntu-latest
         arch:
           - x64
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
-      - uses: julia-actions/setup-julia@0b9b1d2cd24245f151902702d8e73b3f6b910014 # v1.6.0
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: julia-actions/setup-julia@5c9647d97b78a5debe5164e9eec09d653d29bd71 # v2.6.1
         with:
           version: ${{ matrix.version }}
-      - run: rm -rf .ci/JuliaManifest.*.toml
-      - run: rm -rf .ci/JuliaManifest.toml
-      - run: rm -rf .ci/Manifest.*.toml
-      - run: rm -rf .ci/Manifest.toml
+      # No Project/Manifest for staging run
+      - run: rm -rf .ci/JuliaManifest*.toml
+      - run: rm -rf .ci/Manifest*.toml
+      - run: rm -rf .ci/JuliaProject*.toml
+      - run: rm -rf .ci/Project*.toml
       - name: Cache artifacts
-        uses: actions/cache@1a9e2138d905efd099035b49d8b7a3888c653ca8 # v2.1.5
-        env:
-          cache-name: cache-artifacts
-        with:
-          path: ~/.julia/artifacts
-          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('**/.ci/Manifest.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-test-${{ env.cache-name }}-
-            ${{ runner.os }}-test-
-            ${{ runner.os }}-
+        uses: julia-actions/cache@2b1bf4d8a138668ac719ea7ca149b53ed8d8401e # v2.0.7
       - run: julia --color=yes -e 'import Pkg; Pkg.Registry.add("General")'
         env:
           JULIA_PKG_SERVER: ""
@@ -84,6 +76,9 @@ jobs:
             additional_statuses = String[],
             additional_check_runs = String[],
             check_license = true,
-            public_registries = String["https://github.com/HolyLab/HolyLabRegistry"],
+            public_registries = String[
+              "https://github.com/HolyLab/HolyLabRegistry",
+              "https://github.com/cossio/CossioJuliaRegistry"
+            ],
           )
         shell: julia --color=yes --project=.ci/ {0}

@@ -1,9 +1,9 @@
-[0]
-DocStringExtensions = "0.8"
-
 ["0-0.12"]
 Documenter = "0.26"
 julia = "1.5.0-1"
+
+["0-0.18.0"]
+DocStringExtensions = "0.8"
 
 ["0-0.2.0"]
 CitableObject = "0.1"
@@ -56,12 +56,12 @@ EditionBuilders = "0.4.7-0.4"
 Lycian = "0.3"
 Orthography = "0.11"
 
-["0.13-0"]
-julia = "1"
-
 ["0.13-0.14"]
 CitablePhysicalText = "0.3"
 CiteEXchange = "0.4"
+
+["0.13-0.18.0"]
+julia = "1"
 
 ["0.14"]
 CitableObject = "0.8"
@@ -70,29 +70,31 @@ CitableText = "0.11"
 DataFrames = "1"
 EditionBuilders = "0.6"
 
-["0.14-0"]
-CSV = "0.9"
-Documenter = "0.27"
-
 ["0.14-0.14.2"]
 CitableCorpus = "0.6"
+
+["0.14-0.18"]
+Documenter = "0.27"
+
+["0.14-0.18.0"]
+CSV = "0.9"
 
 ["0.14.0"]
 CitableBase = "3"
 Lycian = "0.4"
 Orthography = "0.13"
 
-["0.14.1-0"]
-AtticGreek = "0.7"
-Lycian = "0.5"
-ManuscriptOrthography = "0.2"
-PolytonicGreek = "0.13"
-
 ["0.14.1-0.14.2"]
 Orthography = "0.14"
 
 ["0.14.1-0.14.4"]
 CitableBase = "4"
+
+["0.14.1-0.17"]
+AtticGreek = "0.7"
+Lycian = "0.5"
+ManuscriptOrthography = "0.2"
+PolytonicGreek = "0.13"
 
 ["0.14.3-0.14"]
 Orthography = "0.15"
@@ -106,11 +108,6 @@ CitableCorpus = "0.8"
 
 ["0.15-0"]
 CitableBase = "10"
-CitableCorpus = "0.12"
-CitableTeiReaders = "0.8"
-EditionBuilders = "0.7"
-Orthography = "0.16"
-Tables = "1.6.0-1"
 TypedTables = "1.4.0-1"
 
 ["0.15-0.16.2"]
@@ -124,6 +121,19 @@ CitableObject = "0.11"
 CitableText = "0.14"
 CiteEXchange = "0.9"
 
+["0.15-0.17.2"]
+CitableTeiReaders = "0.8"
+
+["0.15-0.18.0"]
+Orthography = "0.16"
+
+["0.15-0.18.1"]
+EditionBuilders = "0.7"
+Tables = "1.6.0-1"
+
+["0.15-0.18.2"]
+CitableCorpus = "0.12"
+
 ["0.16.3"]
 CitablePhysicalText = "0.7"
 
@@ -132,11 +142,91 @@ CitableImage = "0.5"
 CitablePhysicalText = "0.8"
 
 ["0.16.5-0"]
-CitableImage = "0.6"
-CitableObject = "0.15"
-CitablePhysicalText = "0.9"
-CitableText = "0.15"
 CiteEXchange = "0.10"
+
+["0.16.5-0.18"]
+CitablePhysicalText = "0.9"
+
+["0.16.5-0.18.5"]
+CitableObject = "0.15"
+CitableText = "0.15"
+
+["0.16.5-0.18.8"]
+CitableImage = "0.6"
+
+["0.17.3-0.18.0"]
+CitableTeiReaders = "0.8-0.9"
+
+["0.18-0.18.2"]
+PolytonicGreek = "0.17"
+
+["0.18.1"]
+DocStringExtensions = "0.9"
+julia = "1.8.0-1"
+
+["0.18.1-0"]
+CSV = "0.10"
+CitableTeiReaders = "0.10"
+
+["0.18.1-0.18.2"]
+Orthography = "0.17"
+
+["0.18.2-0"]
+EditionBuilders = "0.8"
+Tables = "1"
+julia = "1"
+
+["0.18.2-0.18.5"]
+DocStringExtensions = "0.8-0.9"
+
+["0.18.3-0"]
+CitableCorpus = "0.13"
+
+["0.18.3-0.18.4"]
+Orthography = "0.18"
+
+["0.18.3-0.18.7"]
+PolytonicGreek = "0.18"
+
+["0.18.4-0.18"]
+ManuscriptOrthography = "0.4"
+
+["0.18.5-0.18"]
+Orthography = "0.21"
+
+["0.18.6-0"]
+CitableObject = "0.16"
+CitableText = "0.16"
+DocStringExtensions = "0.9"
+
+["0.18.8-0.18"]
+PolytonicGreek = "0.20"
+
+["0.18.9-0"]
+CitableImage = "0.7"
+
+["0.19-0"]
+Documenter = ["0.27", "1"]
+Orthography = "0.22"
+
+["0.19.0"]
+CitableParserBuilder = "0.25"
+CitablePhysicalText = "0.10"
+
+["0.19.1"]
+CitableParserBuilder = "0.27"
+
+["0.19.1-0.19.4"]
+CitablePhysicalText = "0.11"
+
+["0.19.2-0.19.3"]
+CitableParserBuilder = "0.29"
+
+["0.19.4-0"]
+CitableParserBuilder = "0.30"
+
+["0.19.5-0"]
+CitablePhysicalText = "0.12"
 
 ["0.2.1-0.7.3"]
 CitableObject = "0.2"

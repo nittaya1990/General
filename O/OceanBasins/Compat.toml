@@ -6,5 +6,14 @@ julia = "1"
 ["0-0.1.5"]
 StaticArrays = "0.12"
 
-["0.1.6-0"]
+["0-0.1.7"]
+DelimitedFiles = "1"
+
+["0.1.6-0.1.7"]
 StaticArrays = ["0.12", "1"]
+
+["0.1.8-0"]
+StaticArrays = "1"
+
+["0.1.9-0"]
+DelimitedFiles = "1"
