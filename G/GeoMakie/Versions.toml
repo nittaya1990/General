@@ -66,3 +66,82 @@ git-tree-sha1 = "654a673cdf12da33118d9475df3d760aa72e9fa6"
 
 ["0.3.1"]
 git-tree-sha1 = "c878df275a3c2041f42fceaee742bd336b989b11"
+
+["0.4.0"]
+git-tree-sha1 = "a966ddbb350ab23e1de9f0e829dc715b27d6cea3"
+
+["0.4.1"]
+git-tree-sha1 = "058e09689b320721f7abae9291e0b04f6df7f38b"
+
+["0.4.2"]
+git-tree-sha1 = "dd17cf50e517d04966aa9dd13fbdaee6e64e7a21"
+
+["0.4.3"]
+git-tree-sha1 = "a158ed425345ed64efc81414137a36e05c07afe4"
+
+["0.4.4"]
+git-tree-sha1 = "e368f3c756d7c566d84875d8f95c90d0399ab20f"
+
+["0.4.5"]
+git-tree-sha1 = "fc63843dc6f34b97933ceb6c5888e2423a3391db"
+
+["0.4.6"]
+git-tree-sha1 = "98f7c722d813bc3c66c61da4c398a1f9e029aefd"
+
+["0.5.0"]
+git-tree-sha1 = "bd2f9bcf2a5cb949cf13993a3cf53cc8d1d99c23"
+
+["0.5.1"]
+git-tree-sha1 = "06753d663f23fd344b70b972c98d2f4fe65252c5"
+
+["0.6.0"]
+git-tree-sha1 = "4b78181e09595949c860304f4d2ee80c9d4e03f3"
+
+["0.6.1"]
+git-tree-sha1 = "2036e8f732018eb0219325ece08389b086bfc600"
+
+["0.6.2"]
+git-tree-sha1 = "1c302958cfaeeefcb5e2e498a0355a37ca0114b8"
+
+["0.6.3"]
+git-tree-sha1 = "339c0a4cd021d0c2d5e7e9afaf9f8f43ba6ef1b7"
+
+["0.6.4"]
+git-tree-sha1 = "cbb6669efd68436b843f7d439773c142f44370e6"
+
+["0.6.5"]
+git-tree-sha1 = "cd10770fef1d33132ec73c21fae1047a00ff3831"
+
+["0.7.0"]
+git-tree-sha1 = "a1031ed06d5235bdd4f9e0970dd905cb1aa33db8"
+
+["0.7.1"]
+git-tree-sha1 = "9fd215bb9b042df7d50caf16ecb9f657e2dd625f"
+
+["0.7.2"]
+git-tree-sha1 = "8624af778e279155a327420393abe396580f56c9"
+
+["0.7.3"]
+git-tree-sha1 = "e00c53c7f8c38133693862488092ed1d10046057"
+
+["0.7.4"]
+git-tree-sha1 = "adb054b2b041d6a57d19c6ce65b9be1b653c9fed"
+
+["0.7.5"]
+git-tree-sha1 = "9e4296e52431ae22a6044b1040fe50ccb8173d32"
+
+["0.7.6"]
+git-tree-sha1 = "a748c3a056b3259e766a8c5705e6435423293afb"
+yanked = true
+
+["0.7.7"]
+git-tree-sha1 = "611fb32ad0ef8dad8a987d9ae90ec9a61f28f04f"
+
+["0.7.8"]
+git-tree-sha1 = "c925cdc59c1b677bd1edfc002f3f7fe84fa318bd"
+
+["0.7.9"]
+git-tree-sha1 = "8183d7894417feed8aa8d2a047aeaf02c8562e64"
+
+["0.7.10"]
+git-tree-sha1 = "b57fba3d575789a53825360674100bf3f90c0d9e"

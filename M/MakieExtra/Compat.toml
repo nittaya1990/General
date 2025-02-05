@@ -1,0 +1,39 @@
+[0]
+InverseFunctions = "0.1.14-0.1"
+PyFormattedStrings = "0.1"
+Reexport = "1.2.2-1"
+julia = "1.9.0-1"
+
+["0-0.1.16"]
+Accessors = "0.1.36-0.1"
+
+["0-0.1.22"]
+Makie = "0.21.2-0.21.9"
+
+["0.1.10-0"]
+DataManipulation = "0.1.16-0.1"
+DataPipes = "0.3.16-0.3"
+
+["0.1.22-0"]
+StructHelpers = "1"
+
+["0.1.22-0.1.41"]
+AccessorsExtra = "0.1.75-0.1"
+
+["0.1.33-0"]
+ObjectiveC = "3.1.0-3"
+
+["0.1.33-0.1.36"]
+Makie = "0.21.10-0.21"
+
+["0.1.41-0"]
+Makie = "0.21.18-0.21"
+
+["0.1.42-0.1.43"]
+AccessorsExtra = "0.1.89-0.1"
+
+["0.1.43-0"]
+KwdefHelpers = "0.1"
+
+["0.1.47-0"]
+AccessorsExtra = "0.1.91-0.1"

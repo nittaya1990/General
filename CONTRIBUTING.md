@@ -1,14 +1,14 @@
 # Contribution guidelines
 
-Anyone can help improve the General registry! Here's a few ways.
+Anyone can help improve the General registry! Here are a few ways.
 
 ## As a package author
 
 You can register your package!
 See [Registering a package in General](https://github.com/JuliaRegistries/General#registering-a-package-in-general) in the README for how to do that.
-The [FAQ](FAQ) helps answer many more questions, like [do I need to register a package to install it?](https://github.com/JuliaRegistries/General#do-i-need-to-register-a-package-to-install-it), [should I register my package?](https://github.com/JuliaRegistries/General#should-i-register-my-package), and more.
+The "FAQ" section in the README helps answer many more questions, like [do I need to register a package to install it?](https://github.com/JuliaRegistries/General#do-i-need-to-register-a-package-to-install-it), [should I register my package?](https://github.com/JuliaRegistries/General#should-i-register-my-package), and more.
 
-* Please be aware of the [package naming guidelines](https://pkgdocs.julialang.org/dev/creating-packages/#Package-naming-guidelines-1)
+* Please be aware of the [package naming guidelines](https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules)
 * We strongly encourage authors to follow best practices like having documentation (or a descriptive README), tests, and continuous integration.
 
 ## As a Julia community member
@@ -39,8 +39,8 @@ Sometimes folks also just need a bit of help to understand the process, and writ
     Such an event would be an extreme security violation and the package would be yanked or removed from the registry as soon as possible-- but we try to be a bit safer by proactively screening names to require manual merging if they are "too similar" to an existing package name.
     
       If a package fails the name similarity check, you can help out by taking a look at the two names as well as the package code itself, and try to make a determination if it looks "too close" (e.g. Websockets vs WebSocket), and if the package code contains anything that would indicate malicious activity.
-      You can make a comment in the PR indicating whether or not you think the name similarity is okay.
-      If you have [triage](permissions)-level access or higher to General, you can additionally add the labels _Override AutoMerge: name similarity is okay_ and _needs to be manually merged in 3 days_.
+      You can make a comment in the PR indicating whether or not you think the name similarity is okay. Include `[noblock]` in the comment if you don't want to block AutoMerge.
+      If you have [triage](permissions)-level access or higher to General, you can additionally override automerge by adding the label _Override AutoMerge: name similarity is okay_.
       
 4. Regardless of AutoMerge's status, if you think perhaps something more should be done before registration, feel free to leave a comment in the PR explaining what you think should be done first.
 Any comment without `[noblock]` included in it will block AutoMerge from automatically merging the pull request (editing `[noblock]` into old comments **will** allow it to resume).
@@ -68,7 +68,8 @@ You can review such a PR by checking that the old URL redirects to the new one.
 * If it does not, you can ask the author why. This should be handled on a case-by-case basis. Be sure to check that:
     1. The package is not being hijacked; check for example that the person making the PR has registered a version of the package before, indicating they are authorized to do so.
     2. All the registered revisions of the package are accessible in the new repository.
-       Specifically, this means checking that all the git-tree-shas can be found in the new repository ([example](https://github.com/JuliaRegistries/General/pull/35965#issuecomment-832721704)).
+       Specifically, this means checking that all the git-tree-shas can be found in the new repository.
+       See [the appendix](#appendix-checking-if-a-repository-contains-all-registered-versions-of-a-package) below for a script to automate this checking.
 
 ### Other ways to help
 
@@ -81,14 +82,76 @@ Besides helping out with PRs to General, you can...
 
 Additionally, if you have elevated [permissions](permissions) to General, there's a few more things you can do:
 
-* [triage] You can add or remove labels to PRs to help communicate the status.
+* [triage] You can add or remove labels to PRs to help communicate the status and to automatically override AutoMerge for name similairty failures
+    * Specifically, adding the label `Override AutoMerge: name similarity is okay` will retrigger AutoMerge and cause it to ignore the distance check between the package name and existing package names. This will not override any other guidelines (e.g. name too short).
 * [triage] You can close PRs if the package author requests it or the registration is superseded by another registration request.
 * [write] You can merge PRs that have the _needs to be manually merged in 3 days_ label once the requisite waiting period has passed, assuming there are no outstanding objections in the PR comments.
 * [write] You can choose to facilitate expedited merge requests, after manually reviewing the package.
-You generally should not merge your own registrations (though you can make requests to another maintainer).
+You generally should not merge your own registrations or those you are involved with (though you can make requests to another maintainer). See also [this FAQ entry](https://github.com/JuliaRegistries/General/#who-can-approve-an-early-merge).
 * [write] You can merge improvements to the README, these guidelines, or our workflows.
 * [admin] You can give other contributors triage-level access so they can apply labels to PRs, or write-level permissions to merge PRs.
 
+## Appendix: Checking if a repository contains all registered versions of a package
+
+When someone wishes to move a package from one repo to another, it is important that the new repo contains all of the tree hashes corresponding to registered versions of a package. That way these old versions of the package can continue to be installed from the new repository. In order to check if a given repository contains all of the registered versions of a package, the following script can be used:
+
+```julia
+using RegistryInstances, UUIDs, Git
+
+const GENERAL_UUID = UUID("23338594-aafe-5451-b93e-139f81909106")
+
+pretty_print_row(row) = println(row.pkg_name, ": v", row.version, " ", row.found ? "found" : "is missing")
+pretty_print_table(table) = foreach(pretty_print_row, table)
+
+function check_all_found(table)
+    idx = findfirst(row -> !row.found, table)
+    idx === nothing && return nothing
+    row = table[idx]
+    error(string("Repository missing v", row.version, " of package $(row.pkg_name)"))
+end
+
+function check_packages_versions(pkg_names, repo_url; registry_uuid=GENERAL_UUID, verbose=true, throw=true)
+    dir = mktempdir()
+    run(`$(git()) clone $(repo_url) $dir`)
+
+    registry = only(filter!(r -> r.uuid == registry_uuid, reachable_registries()))
+
+    table = @NamedTuple{pkg_name::String, version::VersionNumber, found::Bool}[]
+
+    for pkg_name in pkg_names
+        pkg = registry.pkgs[only(uuids_from_name(registry, pkg_name))]
+        versions = registry_info(pkg).version_info
+        for version in sort(collect(keys(versions)))
+            tree_sha = versions[version].git_tree_sha1
+            found = success(`$(git()) -C $dir rev-parse -q --verify "$(tree_sha)^{tree}"`)
+
+            push!(table, (; pkg_name, version, found))
+        end
+    end
+    verbose && pretty_print_table(table)
+    throw && check_all_found(table)
+    return table
+end
+
+check_package_versions(pkg_name, repo_url; kw...) = check_packages_versions([pkg_name], repo_url; kw...)
+```
+
+For example, in [General#75319](https://github.com/JuliaRegistries/General/pull/75319), a package author wanted to update the URL associated
+to their package "FastParzenWindows". At the time, the package had 1 registered version. We can check that it is present in the new repository via:
+```julia
+julia> check_package_versions("FastParzenWindows", "https://github.com/ngiann/FastParzenWindows.jl.git");
+Cloning into '/var/folders/jb/plyyfc_d2bz195_0rc0n_zcw0000gp/T/jl_ke9E8C'...
+...text omitted...
+FastParzenWindows: v0.1.2 found
+```
+We see that this version was found in the new repository. This script was based on [this comment from General#35965](https://github.com/JuliaRegistries/General/pull/35965#issuecomment-832721704),
+which involved checking if 4 packages in the same repository all had their versions present in the new repository. That example can be handled as follows:
+
+```julia
+pkg_names = ["ReinforcementLearningBase", "ReinforcementLearningCore",
+             "ReinforcementLearningEnvironments", "ReinforcementLearningZoo"]
+check_packages_versions(pkg_names, "https://github.com/JuliaReinforcementLearning/ReinforcementLearning.jl.git")
+```
 
 [FAQ]: https://github.com/JuliaRegistries/General#faq]
 [naming-guidelines]: https://pkgdocs.julialang.org/dev/creating-packages/#Package-naming-guidelines-1

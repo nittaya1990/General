@@ -10,6 +10,9 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 ["0-0.5.0"]
 DataStreams = "9a8bc11e-79be-5b39-94d7-1ccc349a1a85"
 
+["0.10.3-0"]
+GeoInterfaceMakie = "0edc0954-3250-4c18-859d-ec71c1660c08"
+
 ["0.3.2-0"]
 GeoFormatTypes = "68eda718-8dee-11e9-39e7-89f7f65f511f"
 
@@ -25,3 +28,10 @@ ImageCore = "a09fc81d-aa75-5fe9-8630-4744c3626534"
 
 ["0.8-0"]
 CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
+
+["0.9-0"]
+Extents = "411431e0-e8b7-467b-b5e0-f676ba4f2910"
+GeoInterfaceRecipes = "0329782f-3d07-4b52-b9f6-d3137cf03c7a"
+
+["0.9.4-0.9"]
+GDAL_jll = "a7073274-a066-55f0-b90d-d619367d196c"

@@ -38,3 +38,19 @@ RelocatableFolders = "05181044-ff0b-4ac5-8273-598c1e38db00"
 
 ["0.6.1-0"]
 Dictionaries = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
+
+["0.6.14"]
+SnoopPrecompile = "66db9d55-30c0-4569-8b51-7e840670fc0c"
+
+["0.6.15-0"]
+PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
+
+["0.7-0"]
+Isoband = "f1662d9f-8043-43de-a69a-05efc1cc6ff4"
+PolygonOps = "647866c9-e3ac-4575-94e7-e3d426903924"
+
+["0.8-0"]
+NaturalSort = "c020b1a1-e9b0-503a-9c33-f039bfc54a85"
+
+["0.8.8-0"]
+Accessors = "7d9f7c33-5ae7-4f3b-8dc6-eff91059b697"

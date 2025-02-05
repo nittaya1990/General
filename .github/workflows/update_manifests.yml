@@ -8,6 +8,8 @@ on:
   schedule:
     - cron: 0 0 * * 1
   workflow_dispatch:
+permissions:
+  contents: read
 defaults:
   run:
     shell: bash
@@ -19,41 +21,38 @@ jobs:
       fail-fast: false
       matrix:
         version:
+          # Keep this list in sync with `registry-consistency-ci-cron.yml`.
           - '1.3'
           - '1.4'
           - '1.5'
           - '1.6'
-          - '1'
-          - 'nightly'
+          - '1.7'
+          - '1.8'
+          - '1.9'
+          - '1.10'
+          - '1.11'
+          # - '1.12' # Uncomment this line once Julia 1.12 is released
+          # - 'nightly' # TODO: uncomment this line
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
-      - uses: julia-actions/setup-julia@0b9b1d2cd24245f151902702d8e73b3f6b910014 # v1.6.0
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: julia-actions/setup-julia@5c9647d97b78a5debe5164e9eec09d653d29bd71 # v2.6.1
         with:
           version: ${{ matrix.version }}
           arch: x64
-      - run: println("::set-output name=manifest_version::$(VERSION.major).$(VERSION.minor)")
+      - name: Cache artifacts
+        uses: julia-actions/cache@2b1bf4d8a138668ac719ea7ca149b53ed8d8401e # v2.0.7
+      - run: write(ENV["GITHUB_OUTPUT"], "manifest_version=$(VERSION.major).$(VERSION.minor)")
         shell: julia --color=yes {0}
         id: manifest_version
-      - run: echo "We will update the manifest at .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml"
+      - run: echo "We will update the manifest at .ci/Manifest-v${{ steps.manifest_version.outputs.manifest_version }}.toml"
       - run: rm -rf .ci/Manifest.toml
       - run: |
-          if [ -f ".ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml" ]; then
+          if [ -f ".ci/Manifest-v${{ steps.manifest_version.outputs.manifest_version }}.toml" ]; then
               echo "The manifest file exists, so I will update the existing manifest."
-              mv .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml .ci/Manifest.toml
+              mv .ci/Manifest-v${{ steps.manifest_version.outputs.manifest_version }}.toml .ci/Manifest.toml
           else
               echo "The manifest file does not exist, so I will create a new manifest from scratch."
           fi
-      - name: Cache artifacts
-        uses: actions/cache@1a9e2138d905efd099035b49d8b7a3888c653ca8 # v2.1.5
-        env:
-          cache-name: cache-artifacts
-        with:
-          path: ~/.julia/artifacts
-          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('**/.ci/Manifest.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-test-${{ env.cache-name }}-
-            ${{ runner.os }}-test-
-            ${{ runner.os }}-
       - run: julia --color=yes -e 'import Pkg; Pkg.Registry.add("General")'
         env:
           JULIA_PKG_SERVER: ""
@@ -69,12 +68,12 @@ jobs:
               end
           end
         shell: julia --color=yes {0}
-      - run: mv .ci/Manifest.toml .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml
+      - run: mv .ci/Manifest.toml .ci/Manifest-v${{ steps.manifest_version.outputs.manifest_version }}.toml
       - run: git status
-      - uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700 # v2.2.3
+      - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
         with:
           name: manifest_file_for_${{ steps.manifest_version.outputs.manifest_version }}
-          path: .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml
+          path: .ci/Manifest-v${{ steps.manifest_version.outputs.manifest_version }}.toml
           if-no-files-found: error
   make_single_pr:
     needs: update_each_manifest
@@ -83,20 +82,20 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - run: rm -rf /tmp/manifest_updater
       - run: mkdir /tmp/manifest_updater
       - run: chmod 700 /tmp/manifest_updater
-      - uses: actions/download-artifact@158ca71f7c614ae705e79f25522ef4658df18253 # v2.0.9
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           path: /tmp/manifest_updater/download_artifacts
-      - run: mv /tmp/manifest_updater/download_artifacts/manifest_file_for_*/Manifest.*.toml .ci
+      - run: mv /tmp/manifest_updater/download_artifacts/manifest_file_for_*/Manifest-v*.toml .ci
       - run: rm -rf /tmp/manifest_updater
       - run: rm -rf .ci/Manifest.toml
       - run: chmod 600 .ci/Project.toml
-      - run: chmod 600 .ci/Manifest.*.toml
+      - run: chmod 600 .ci/Manifest-*.toml
       - run: git status
-      - uses: peter-evans/create-pull-request@052fc72b4198ba9fbc81b818c6e1859f747d49a8 # v3.8.2
+      - uses: peter-evans/create-pull-request@67ccf781d68cd99b580ae25a5c18a1cc84ffff1f # v7.0.6
         with:
           token: ${{ secrets.TAGBOT_TOKEN }}
           delete-branch: true

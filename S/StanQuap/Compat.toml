@@ -29,7 +29,10 @@ julia = "1"
 ["0-4.1.0"]
 NamedTupleTools = "0.13"
 
-[1-4]
+["0-4.2"]
+Statistics = "1"
+
+["1-4.1"]
 DocStringExtensions = "0.8"
 
 ["1.0.3-1.0"]
@@ -59,6 +62,8 @@ CSV = "0.9"
 ["1.1-4"]
 Distributions = "0.25"
 MonteCarloMeasurements = "1"
+
+["1.1-4.2.5"]
 StatsBase = "0.33"
 
 ["1.3"]
@@ -77,13 +82,41 @@ CSV = "0.9-0.10"
 
 [4]
 CSV = "0.10"
-DataFrames = "1.3.0-1"
 Reexport = "1.2.0-1"
+
+["4-4.2"]
+DataFrames = "1.3.0-1"
+
+["4-4.2.0"]
 StanOptimize = "4"
 StanSample = "6"
 
 ["4.1-4"]
 StanBase = "4"
 
-["4.1.1-4"]
+["4.1.1-4.1"]
 NamedTupleTools = "0.13-0.14"
+
+["4.2"]
+DocStringExtensions = "0.8-0.9"
+
+["4.2-4"]
+NamedTupleTools = "0.14"
+
+["4.2.1-4"]
+StanOptimize = "4.2.0-4"
+
+["4.2.1-4.2.2"]
+StanSample = "6.7.0-6"
+
+["4.2.3-4.2"]
+StanSample = "6.7.0-7"
+
+["4.2.6-4.2"]
+StatsBase = "0.33-0.34"
+
+["4.3-4"]
+DataFrames = "1"
+DocStringExtensions = "0.9"
+StanSample = "7-8"
+StatsBase = "0.34"

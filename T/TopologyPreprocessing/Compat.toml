@@ -8,6 +8,7 @@ julia = "1"
 Colors = "0.12"
 CoordinateTransformations = "0.6"
 DataFrames = "0.22"
+DelimitedFiles = "1"
 Dierckx = "0.5"
 FileIO = "1.4.0-1"
 ImageDraw = "0.2"
@@ -25,6 +26,7 @@ VideoIO = "0.8"
 ["0-0.1.1"]
 Combinatorics = "1"
 Ripserer = "0.16"
+Statistics = "1"
 
 ["0-0.1.2"]
 Distances = "0.9"

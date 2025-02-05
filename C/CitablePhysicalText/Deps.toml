@@ -5,6 +5,10 @@ DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+["0.12-0"]
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+
 ["0.2-0.7"]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 
@@ -23,3 +27,6 @@ HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 
 ["0.8.2-0"]
 SplitApplyCombine = "03a91e81-4c3e-53e1-a0a4-9c0c8f19dd66"
+
+["0.9.6-0"]
+TestSetExtensions = "98d24dd4-01ad-11ea-1b02-c9a08f80db04"

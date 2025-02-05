@@ -1,29 +1,30 @@
 ["1-1.1"]
 Images = "0.9-0.17"
+Statistics = ["0.7", "1"]
 julia = ["0.7", "1"]
 
 ["1-1.2"]
-ImageFiltering = "0.1.3-0.6"
 LightGraphs = "0.9-1"
 SimpleWeightedGraphs = "0-1"
 
 ["1-1.3"]
-Clustering = "0.9.0 - 0.13"
-DataStructures = "0.7.1 - 0.17"
-Distances = "0.0.0 - 0.8"
-RegionTrees = "0.1.0 - 0.3"
-StaticArrays = "0.5.0 - 0.12"
-
-["1.2-1"]
-julia = "1"
+Clustering = "0.9.0-0.13"
+DataStructures = "0.7.1-0.17"
+Distances = "0.0.0-0.8"
+ImageFiltering = "0.1.3-0.6"
+RegionTrees = "0.1.0-0.3"
+StaticArrays = "0.5.0-0.12"
 
 ["1.2-1.3"]
-Images = "0.9.0 - 0.19"
+Images = "0.9.0-0.19"
+
+["1.2-1.7"]
+Statistics = "1"
+julia = "1"
 
 ["1.3"]
-ImageFiltering = "0.1.3 - 0.6"
-LightGraphs = "0.9.0 - 1"
-SimpleWeightedGraphs = "0.0.1 - 1"
+LightGraphs = "0.9.0-1"
+SimpleWeightedGraphs = "0.0.1-1"
 
 ["1.4-1"]
 RegionTrees = "0.2-0.3"
@@ -56,7 +57,7 @@ Images = "0.18-0.21"
 ["1.4.2-1.4.6"]
 Images = "0.18-0.22"
 
-["1.4.3-1"]
+["1.4.3-1.8.0"]
 Clustering = "0.10-0.14"
 
 ["1.4.6-1"]
@@ -81,11 +82,33 @@ Images = "0.18-0.24"
 ImageMorphology = "0.2.6-0.2"
 
 ["1.6-1"]
-ImageCore = "0.9"
 ImageFiltering = "0.6-0.7"
+
+["1.6-1.8.1"]
+ImageCore = "0.9"
+
+["1.7"]
+ImageMorphology = "0.2.6-0.3"
 
 ["1.7-1"]
 Graphs = "1.4.1-1"
-ImageMorphology = "0.2.6-0.3"
-MetaGraphs = "0.7"
 SimpleWeightedGraphs = "1.2.0-1"
+
+["1.7-1.8.2"]
+MetaGraphs = "0.7"
+
+["1.8-1"]
+ImageMorphology = "0.2.6-0.4"
+julia = "1.6.0-1"
+
+["1.8-1.8.2"]
+Statistics = "1.6.0-1"
+
+["1.8.1-1"]
+Clustering = "0.15"
+
+["1.8.2-1"]
+ImageCore = "0.10"
+
+["1.8.3-1"]
+MetaGraphs = "0.7-0.8"

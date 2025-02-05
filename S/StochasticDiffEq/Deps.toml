@@ -50,8 +50,10 @@ FiniteDiff = "6a86dc24-6348-571c-b903-95158fe2bd41"
 ["6.20-6"]
 UnPack = "3a884ed6-31ef-47d7-9d2a-63182c4928ed"
 
-["6.21-6"]
+["6.21-6.49"]
 DiffEqJump = "c894b116-72e5-5b58-be3c-e6d8d4ac2b12"
+
+["6.21-6.72"]
 OrdinaryDiffEq = "1dea7af3-3e70-54e6-95c3-0bf5283fa5ed"
 
 ["6.33.2-6"]
@@ -63,11 +65,31 @@ Adapt = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
 ["6.45-6"]
 LevyArea = "2d8b4e74-eb68-11e8-0fb9-d5eb67b50637"
 
-["6.5-6"]
+["6.49-6"]
+SciMLBase = "0bca4576-84f4-4d90-8ffe-ffa030f20462"
+
+["6.5-6.63"]
 FillArrays = "1a297f60-69ca-5386-bcde-b61e274b549b"
+
+["6.50-6"]
+JumpProcesses = "ccbc3e58-028d-4f4c-8cd5-9ae44345cda5"
+
+["6.61-6"]
+SciMLOperators = "c0aeaf25-5076-4817-a8d5-81caf7dfa961"
 
 ["6.7-6"]
 SparseDiffTools = "47a9eef4-7e08-11e9-0b38-333d64bd3804"
+
+["6.70-6"]
+FastPower = "a4df4552-cc26-4903-aec0-212e50a0e84b"
+
+["6.72-6"]
+ADTypes = "47edcb42-4c32-4615-8424-f2b9edc5f35b"
+OrdinaryDiffEqCore = "bbf590c4-e513-4bbe-9b18-05decba2e5d8"
+
+["6.73-6"]
+OrdinaryDiffEqDifferentiation = "4302a76b-040a-498a-8c04-15b101fed76b"
+OrdinaryDiffEqNonlinearSolve = "127b3ac7-2247-4354-8eb6-78cf4e7c58e8"
 
 ["6.8-6"]
 ArrayInterface = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
